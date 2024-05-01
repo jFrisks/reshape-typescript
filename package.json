@@ -1,10 +1,9 @@
 {
   "name": "reshape-typescript",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "A helper library for reshape",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
-  "type": "module",
   "files": [
     "dist",
     "LICENSE",

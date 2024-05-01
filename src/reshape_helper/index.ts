@@ -18,8 +18,6 @@ function search_path(...dirs: string[]): string | null {
 
     const migrations = find_migrations(dirs);
 
-    console.debug("migrations", migrations);
-
     if (migrations.length === 0) {
         return null;
     } else {
@@ -32,14 +30,11 @@ function find_migrations(dirs: string[]): string[] {
     // Find all files across all specified directories
     const files = dirs.flatMap(dir => glob.sync(`${dir}/*`))
 
-    console.debug("before sorted_files", files);
     // Sort files by their names
     let sorter = natsort();
     const sorted_files = files.sort(
         (path_a, path_b) => sorter(path.basename(path_a), path.basename(path_b))
     );
-
-    console.debug("sorted_files", sorted_files);
 
     const migrations = sorted_files.map(migration_name_for_file);
     return migrations;
